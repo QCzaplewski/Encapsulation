@@ -40,7 +40,7 @@ public class Employee {
 
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.
-    public void meetWithHrForBenefitAndSalryInfo() {
+    private void meetWithHrForBenefitAndSalryInfo() {
         metWithHr = true;
         System.out.println(firstName + " " + lastName + " met with Hr on "
             + du.getFormattedDate(orientationDate));
@@ -48,7 +48,7 @@ public class Employee {
 
     // Assume this must be performed second, and assume that an employee
     // would only do this once, upon being hired.:
-    public void meetDepartmentStaff() {
+    private void meetDepartmentStaff() {
         metDeptStaff = true;       
         System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
             + du.getFormattedDate(orientationDate));
@@ -57,7 +57,7 @@ public class Employee {
     // Assume this must be performed third. And assume that because department
     // policies may change that this method may need to be called 
     // independently from other classes.
-    public void reviewDeptPolicies() {
+    private void reviewDeptPolicies() {
         reviewedDeptPolicies = true;      
         System.out.println(firstName + " " + lastName + " reviewed Dept policies on "
             + du.getFormattedDate(orientationDate));
@@ -66,13 +66,19 @@ public class Employee {
     // Assume this must be performed 4th. And assume that because employees
     // sometimes change office locations that this method may need to be called 
     // independently from other classes.
-    public void moveIntoCubicle(String cubeId) {
+    private void moveIntoCubicle(String cubeId) {
         this.cubeId = cubeId;
         this.movedIn = true;        
         System.out.println(firstName + " " + lastName + " moved into cubicle "
                 + cubeId + " on " + du.getFormattedDate(orientationDate));
     }
-
+    
+    public void scheduleSetter(String cubeID){
+        this.meetWithHrForBenefitAndSalryInfo();
+        this.meetDepartmentStaff();
+        this.reviewDeptPolicies();
+        this.moveIntoCubicle(cubeID);
+    }
     public String getFirstName() {
         return firstName;
     }
