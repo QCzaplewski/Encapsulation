@@ -6,8 +6,6 @@ package lab3;
  */
 public class OutputService {
     
-    public OutputService(){}
-    
     public void simpleOutput(String msg) {
         System.out.println(msg);
     }
